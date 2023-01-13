@@ -1,0 +1,28 @@
+.info__content {
+   list-style: none;
+   margin-left: 0;
+   padding-left: 0;
+}
+.info__photo-wrapper {
+   height: 200px;
+   width: 200px;
+}
+
+.info__photo-img {
+   width: 200px;
+   height: 200px;
+   border: solid 4px white;
+}
+
+.contacts__info-name {
+   padding-right: 0.5rem;
+}
+
+.info__help {
+   height: 290px;
+}
+
+.info__data {
+   font-size: 25px;
+   font-weight: bold;
+}

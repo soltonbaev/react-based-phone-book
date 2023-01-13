@@ -1,0 +1,20 @@
+.details__forms {
+   display: flex;
+   flex-direction: column;
+   border: solid 1px #a9a9a936;
+   border-radius: 5px;
+}
+
+.forms__item {
+   display: block;
+   margin: 10px;
+   padding: 5px;
+   background-color: #3e3e3e;
+   color: white;
+   border-radius: 2px;
+   border: none;
+}
+
+.contacts__edit-buttons {
+   display: flex;
+}
