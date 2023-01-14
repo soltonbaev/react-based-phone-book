@@ -1,36 +1,70 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import EditBtns from './EditBtns';
 import './Forms.css';
 import {useAddContact} from '../../../functions/fetch';
 import Inputs from './Inputs';
 import {useContext} from 'react';
-import {detailsContext} from '../../../contexts/DetailsContext';
+// import {detailsContext} from '../../../contexts/DetailsContext';
 import {globalContext} from '../../../contexts/GlobalContext';
 
 const Forms = () => {
    const [inpState, clearInp] = useState(0);
    const [btnType, setBtnType] = useState('add');
 
-   const {infoType, setInfoType} = useContext(detailsContext);
+   const {infoType, setInfoType, contactObj} = useContext(globalContext);
    const {editBtns} = useContext(globalContext);
    const {listState, listRefresh} = useContext(globalContext);
-   const inpObj = {firstName: '', lastName: '', phoneNumber: '', photo: ''};
+   const [firstNameState, setFirstName] = useState('');
+   const [lastNameState, setLastName] = useState('');
+   const [phoneNumberState, setPhoneNumber] = useState('');
+   const [photoState, setPhoto] = useState('');
+   const inpObj = {
+      firstName: firstNameState,
+      lastName: lastNameState,
+      phoneNumber: phoneNumberState,
+      photo: photoState,
+   };
 
-   function formInpObj(input) {
+   useEffect(() => {
+      function setStates() {
+         setFirstName(contactObj.firstName);
+         setLastName(contactObj.lastName);
+         setPhoneNumber(contactObj.phoneNumber);
+         setPhoto(contactObj.photo);
+      }
+      setStates();
+   }, [contactObj.firstName]);
+
+   function setInputStates(input) {
       if (input.id === 'name') {
-         inpObj.firstName = input.value;
-         console.log(inpObj);
+         setFirstName(input.value);
+         console.log(firstNameState);
       } else if (input.id === 'last-name') {
-         inpObj.lastName = input.value;
-         console.log(inpObj);
+         setLastName(input.value);
+         console.log(lastNameState);
       } else if (input.id === 'phone-number') {
-         inpObj.phoneNumber = input.value;
-         console.log(inpObj);
+         setPhoneNumber(input.value);
+         console.log(phoneNumberState);
       } else if (input.id === 'photo') {
-         inpObj.photo = input.value;
-         console.log(inpObj);
+         setPhoto(input.value);
+         console.log(photoState);
       }
    }
+   // function formInpObj(input) {
+   //    if (input.id === 'name') {
+   //       inpObj.firstName = input.value;
+   //       console.log(inpObj);
+   //    } else if (input.id === 'last-name') {
+   //       inpObj.lastName = input.value;
+   //       console.log(inpObj);
+   //    } else if (input.id === 'phone-number') {
+   //       inpObj.phoneNumber = input.value;
+   //       console.log(inpObj);
+   //    } else if (input.id === 'photo') {
+   //       inpObj.photo = input.value;
+   //       console.log(inpObj);
+   //    }
+   // }
 
    function SubmitInpObj() {
       console.log(inpObj);
@@ -48,7 +82,13 @@ const Forms = () => {
       <div className="details__forms forms">
          <Inputs
             key={inpState}
-            formInpObj={formInpObj}
+            // formInpObj={formInpObj}
+            firstNameState={firstNameState}
+            lastNameState={lastNameState}
+            phoneNumberState={phoneNumberState}
+            photoState={photoState}
+            setInputStates={setInputStates}
+
             // contactObj={contactObj}
          />
          {!editBtns && (

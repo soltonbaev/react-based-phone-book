@@ -29,7 +29,6 @@ const List = () => {
                      onClick={() => {
                         setContactObj(contact);
                         editBtnsOn(true);
-                        setReadOnly(true);
                         setInfoType('content');
                      }}
                      key={contact.id}

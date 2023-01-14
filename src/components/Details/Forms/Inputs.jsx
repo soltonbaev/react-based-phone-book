@@ -2,57 +2,84 @@ import React from 'react';
 import {globalContext} from '../../../contexts/GlobalContext';
 import {useContext, useState, useEffect} from 'react';
 
-const Inputs = ({formInpObj, removeReadOnly}) => {
+const Inputs = ({
+   firstNameState,
+   lastNameState,
+   phoneNumberState,
+   photoState,
+   setInputStates,
+}) => {
    const {contactObj} = useContext(globalContext);
+   // const {firstName, lastName, phoneNumber, photo} = contactObj;
+   const [fName, setFName] = useState('');
+   const [lName, setLName] = useState('');
+   const [pNumber, setPNumber] = useState('');
+   const [photoVal, setPhotoVal] = useState('');
 
-   const {setContactObj} = useContext(globalContext);
-   const {readOnly} = useContext(globalContext);
+   useEffect(() => {
+      function setF() {
+         // console.log(contactObj.firstName);
+         setFName(contactObj.firstName);
+         setLName(contactObj.lastName);
+         setPNumber(contactObj.phoneNumber);
+         setPhotoVal(contactObj.photo);
+      }
+      setF();
+   }, [contactObj.firstName]);
 
    return (
       <>
          <input
-            value={contactObj.firstName}
+            value={firstNameState}
             id="name"
             onChange={e => {
-               formInpObj(e.target);
+               setInputStates(e.target);
+            }}
+            onClick={() => {
+               // setFName(null);
             }}
             placeholder="Enter your name"
             className="forms__item forms__input-name"
             type="text"
-            readOnly={readOnly && true}
          />
          <input
-            value={contactObj.lastName}
+            value={lastNameState}
             id="last-name"
             onChange={e => {
-               formInpObj(e.target);
+               setInputStates(e.target);
             }}
             placeholder="Enter your last name"
             className="forms__item forms__input-lname"
             type="text"
-            readOnly={readOnly && true}
+            onClick={() => {
+               // setLName(null);
+            }}
          />
          <input
-            value={contactObj.phoneNumber}
+            value={phoneNumberState}
             id="phone-number"
             onChange={e => {
-               formInpObj(e.target);
+               setInputStates(e.target);
             }}
             placeholder="Enter your phone number"
             className="forms__item forms__input-phone"
             type="number"
-            readOnly={readOnly && true}
+            onClick={() => {
+               // setPNumber(null);
+            }}
          />
          <input
-            value={contactObj.photo}
+            value={photoState}
             id="photo"
             onChange={e => {
-               formInpObj(e.target);
+               setInputStates(e.target);
             }}
             placeholder="Add photo URL"
             className="forms__item forms__input-photo"
             type="url"
-            readOnly={readOnly && true}
+            onClick={() => {
+               // setPhotoVal(null);
+            }}
          />
       </>
    );

@@ -21,7 +21,7 @@ const EditBtns = ({inpObj}) => {
       infoRefresh,
    } = useContext(globalContext);
 
-   const [editState, setEditState] = useState('edit');
+   // const [editState, setEditState] = useState('update');
    function clearInputs() {
       let inps = document.querySelectorAll('input');
       inps.forEach(input => {
@@ -31,28 +31,28 @@ const EditBtns = ({inpObj}) => {
 
    return (
       <span className="contacts__edit-buttons forms__element_hidden">
-         {editState === 'edit' && (
+         {/* {editState === 'edit' && (
             <button
                className="forms__item forms__form-button contacts__btn-edit"
                onClick={() => {
                   setContactObjCopy({...contactObj});
-                  setContactObj({});
+                  //   setContactObj({});
                   setEditState('update');
                   setReadOnly(false);
                }}
             >
                Edit
             </button>
-         )}
-         {editState === 'update' && (
+         )} */}
+         {editBtnsOn && (
             <button
                className="forms__item forms__form-button contacts__btn-update"
                onClick={e => {
-                  updateContact(contactObjCopy.id, inpObj);
-                  console.log('contactObjCopy', contactObjCopy);
+                  updateContact(contactObj.id, inpObj);
+                  //   console.log('contactObjCopy', contactObjCopy);
                   //   setContactObj(contactObjCopy);
                   setReadOnly(true);
-                  setEditState('edit');
+                  // setEditState('edit');
                   listRefresh(listState + 1);
                   //   infoRefresh(infoState + 1);
                }}
@@ -60,7 +60,7 @@ const EditBtns = ({inpObj}) => {
                Update
             </button>
          )}
-         {editState === 'edit' && (
+         {editBtnsOn && (
             <button
                className="forms__item forms__form-button forms__btn-new"
                onClick={() => {
@@ -75,7 +75,7 @@ const EditBtns = ({inpObj}) => {
                New
             </button>
          )}
-         {editState === 'edit' && (
+         {editBtnsOn && (
             <button
                className="forms__item forms__form-button forms__btn-delete"
                onClick={() => {
