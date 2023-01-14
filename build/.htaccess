@@ -1,4 +1,4 @@
-<IfModule mod_rewrite.c>
+<!-- <IfModule mod_rewrite.c>
 
   RewriteEngine On
   RewriteBase /
@@ -8,4 +8,4 @@
   RewriteCond %{REQUEST_FILENAME} !-l
   RewriteRule . /index.html [L]
 
-</IfModule>
+</IfModule> -->
