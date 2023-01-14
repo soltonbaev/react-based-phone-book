@@ -3,19 +3,31 @@ import './App.css';
 import Details from './components/Details/Details';
 import List from './components/List/List';
 import {useContext} from 'react';
-import {globalContext} from './contexts/GlobalContext';
+import {NavLink} from 'react-router-dom';
+import {Routes, Route, Link} from 'react-router-dom';
+import Home from './components/Tabs/Home';
+import About from './components/Tabs/About';
 
 function App() {
-   const {listState, formsState} = useContext(globalContext);
    //  console.log('list', listRefresh);
    return (
       <div className="contacts">
          <header className="contacts__header">
             <h1>REACT BASED CONTACT BOOK</h1>
+            <div className="tabs">
+               <span className="tabs__home">
+                  <NavLink to="/">App</NavLink>
+               </span>
+               <span className="tabs__about">
+                  <NavLink to="/about">About</NavLink>
+               </span>
+            </div>
          </header>
          <main className="contacts__app">
-            <Details />
-            <List key={listState} />
+            <Routes>
+               <Route path="/" element={<Home />} />
+               <Route path="/about" element={<About />} />
+            </Routes>
          </main>
          <footer>© 2022 crafted by Ibraim Soltonbaev</footer>
       </div>

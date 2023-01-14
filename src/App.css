@@ -13,9 +13,44 @@
 
 .contacts__app {
    background-color: #241f1be0;
-   border-radius: 5px;
+   /* border-radius: 5px; */
+   /* border-top-right-radius: 10px; */
+   border-top-left-radius: 10px;
+   border-bottom-left-radius: 10px;
+   border-bottom-right-radius: 10px;
    width: 500px;
    margin: auto;
    display: flex;
-   border-radius: 10px;
+   /* border-radius: 10px; */
+   height: 550px;
+}
+
+.tabs {
+   display: flex;
+   justify-content: end;
+   /* gap: 0.5rem; */
+}
+
+.tabs a {
+   text-decoration: none;
+   color: white;
+   background-color: #3b3b3bb0;
+   font-size: 15px;
+   border-top-right-radius: 20px;
+   border-top-left-radius: 20px;
+   padding: 7px 25px 0px;
+}
+
+.tabs .active {
+   background-color: #241f1be0;
+   border-style: none;
+   width: 30px;
+}
+.tabs__home,
+.tabs__about {
+   /* border-color: red;
+   border-style: solid;
+   border-top-right-radius: 30px;
+   border-top-left-radius: 30px;
+   width: 235px; */
 }

@@ -50,6 +50,13 @@ const Forms = () => {
          console.log(photoState);
       }
    }
+
+   function clearInputStates() {
+      setFirstName('');
+      setLastName('');
+      setPhoneNumber('');
+      setPhoto('');
+   }
    // function formInpObj(input) {
    //    if (input.id === 'name') {
    //       inpObj.firstName = input.value;
@@ -99,7 +106,9 @@ const Forms = () => {
                Add contact
             </button>
          )}
-         {editBtns && <EditBtns inpObj={inpObj} />}
+         {editBtns && (
+            <EditBtns clearInputStates={clearInputStates} inpObj={inpObj} />
+         )}
       </div>
    );
 };

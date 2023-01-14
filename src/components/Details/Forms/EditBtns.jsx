@@ -4,7 +4,7 @@ import {useContext, useState} from 'react';
 import {globalContext} from '../../../contexts/GlobalContext';
 import {deleteContact, updateContact} from '../../../functions/fetch';
 
-const EditBtns = ({inpObj}) => {
+const EditBtns = ({inpObj, clearInputStates}) => {
    const {
       editBtnsOn,
       listRefresh,
@@ -64,11 +64,8 @@ const EditBtns = ({inpObj}) => {
             <button
                className="forms__item forms__form-button forms__btn-new"
                onClick={() => {
-                  clearInputs();
+                  clearInputStates();
                   editBtnsOn(false);
-                  setContactObj({});
-
-                  setReadOnly(false);
                   setInfoType('help');
                }}
             >
@@ -79,12 +76,11 @@ const EditBtns = ({inpObj}) => {
             <button
                className="forms__item forms__form-button forms__btn-delete"
                onClick={() => {
-                  clearInputs();
+                  clearInputStates();
                   setContactObj({});
                   deleteContact(contactObj.id);
                   setInfoType('help');
                   editBtnsOn(false);
-                  setReadOnly(false);
                   listRefresh(listState + 1);
                }}
             >
