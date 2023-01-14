@@ -1,15 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
-import Details from './components/Details/Details';
-import List from './components/List/List';
-import {useContext} from 'react';
 import {NavLink} from 'react-router-dom';
 import {Routes, Route, Link} from 'react-router-dom';
 import Home from './components/Tabs/Home';
 import About from './components/Tabs/About';
 
 function App() {
-   //  console.log('list', listRefresh);
    return (
       <div className="contacts">
          <header className="contacts__header">

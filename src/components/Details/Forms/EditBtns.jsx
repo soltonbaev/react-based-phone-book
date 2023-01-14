@@ -9,52 +9,19 @@ const EditBtns = ({inpObj, clearInputStates}) => {
       editBtnsOn,
       listRefresh,
       listState,
-      formsRefresh,
-      formsState,
       setContactObj,
       contactObj,
-      setReadOnly,
       setInfoType,
-      contactObjCopy,
-      setContactObjCopy,
-      infoState,
-      infoRefresh,
    } = useContext(globalContext);
-
-   // const [editState, setEditState] = useState('update');
-   function clearInputs() {
-      let inps = document.querySelectorAll('input');
-      inps.forEach(input => {
-         input.value = '';
-      });
-   }
 
    return (
       <span className="contacts__edit-buttons forms__element_hidden">
-         {/* {editState === 'edit' && (
-            <button
-               className="forms__item forms__form-button contacts__btn-edit"
-               onClick={() => {
-                  setContactObjCopy({...contactObj});
-                  //   setContactObj({});
-                  setEditState('update');
-                  setReadOnly(false);
-               }}
-            >
-               Edit
-            </button>
-         )} */}
          {editBtnsOn && (
             <button
                className="forms__item forms__form-button contacts__btn-update"
                onClick={e => {
                   updateContact(contactObj.id, inpObj);
-                  //   console.log('contactObjCopy', contactObjCopy);
-                  //   setContactObj(contactObjCopy);
-                  setReadOnly(true);
-                  // setEditState('edit');
                   listRefresh(listState + 1);
-                  //   infoRefresh(infoState + 1);
                }}
             >
                Update

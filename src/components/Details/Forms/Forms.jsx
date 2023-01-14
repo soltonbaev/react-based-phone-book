@@ -4,13 +4,10 @@ import './Forms.css';
 import {useAddContact} from '../../../functions/fetch';
 import Inputs from './Inputs';
 import {useContext} from 'react';
-// import {detailsContext} from '../../../contexts/DetailsContext';
 import {globalContext} from '../../../contexts/GlobalContext';
 
 const Forms = () => {
    const [inpState, clearInp] = useState(0);
-   const [btnType, setBtnType] = useState('add');
-
    const {infoType, setInfoType, contactObj} = useContext(globalContext);
    const {editBtns} = useContext(globalContext);
    const {listState, listRefresh} = useContext(globalContext);
@@ -38,16 +35,12 @@ const Forms = () => {
    function setInputStates(input) {
       if (input.id === 'name') {
          setFirstName(input.value);
-         console.log(firstNameState);
       } else if (input.id === 'last-name') {
          setLastName(input.value);
-         console.log(lastNameState);
       } else if (input.id === 'phone-number') {
          setPhoneNumber(input.value);
-         console.log(phoneNumberState);
       } else if (input.id === 'photo') {
          setPhoto(input.value);
-         console.log(photoState);
       }
    }
 
@@ -57,28 +50,10 @@ const Forms = () => {
       setPhoneNumber('');
       setPhoto('');
    }
-   // function formInpObj(input) {
-   //    if (input.id === 'name') {
-   //       inpObj.firstName = input.value;
-   //       console.log(inpObj);
-   //    } else if (input.id === 'last-name') {
-   //       inpObj.lastName = input.value;
-   //       console.log(inpObj);
-   //    } else if (input.id === 'phone-number') {
-   //       inpObj.phoneNumber = input.value;
-   //       console.log(inpObj);
-   //    } else if (input.id === 'photo') {
-   //       inpObj.photo = input.value;
-   //       console.log(inpObj);
-   //    }
-   // }
 
    function SubmitInpObj() {
-      console.log(inpObj);
       useAddContact(inpObj);
-      //   console.log('setInfoType', setInfoType);
       setInfoType('help');
-      console.log(infoType);
       clearInp(state => {
          state = state + 1;
          return state;
@@ -89,14 +64,11 @@ const Forms = () => {
       <div className="details__forms forms">
          <Inputs
             key={inpState}
-            // formInpObj={formInpObj}
             firstNameState={firstNameState}
             lastNameState={lastNameState}
             phoneNumberState={phoneNumberState}
             photoState={photoState}
             setInputStates={setInputStates}
-
-            // contactObj={contactObj}
          />
          {!editBtns && (
             <button

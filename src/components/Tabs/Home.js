@@ -5,7 +5,7 @@ import Details from '../Details/Details';
 import List from '../List/List';
 
 const Home = () => {
-   const {listState, formsState} = useContext(globalContext);
+   const {listState} = useContext(globalContext);
    return (
       <>
          <Details />

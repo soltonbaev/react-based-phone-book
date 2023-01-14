@@ -3,8 +3,8 @@ import './Info.css';
 import {useContext} from 'react';
 import {globalContext} from '../../../contexts/GlobalContext';
 const Content = () => {
-   const {contactObj, contactObjCopy} = useContext(globalContext);
-   console.log(contactObj);
+   const {contactObj} = useContext(globalContext);
+
    return (
       <ul className="info__content">
          <li className="info__row">
@@ -23,13 +23,7 @@ const Content = () => {
          </li>
          <li className="info__row info__photo">
             <div className="info__photo-wrapper">
-               <img
-                  className="info__photo-img"
-                  src={
-                     contactObj.photo ? contactObj.photo : contactObjCopy.photo
-                  }
-                  alt=""
-               />
+               <img className="info__photo-img" src={contactObj.photo} alt="" />
             </div>
          </li>
       </ul>

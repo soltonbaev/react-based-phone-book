@@ -9,8 +9,8 @@ import {globalContext} from '../../contexts/GlobalContext';
 import {API} from '../../functions/useGlobals';
 const List = () => {
    const [contacts, setContacts] = useState([]);
-   const {setContactObj, editBtnsOn, setReadOnly, setInfoType} =
-      useContext(globalContext);
+   const [active, setActive] = useState(null);
+   const {setContactObj, editBtnsOn, setInfoType} = useContext(globalContext);
 
    useEffect(() => {
       async function getData() {
@@ -30,9 +30,12 @@ const List = () => {
                         setContactObj(contact);
                         editBtnsOn(true);
                         setInfoType('content');
+                        setActive(contact.id);
                      }}
                      key={contact.id}
-                     className="list__item"
+                     className={`list__item ${
+                        active === contact.id && 'list__item_active'
+                     }`}
                   >
                      <span className="list__first-name">
                         {contact.firstName}
