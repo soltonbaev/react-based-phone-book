@@ -9,6 +9,6 @@ React libraries used are:
 
 Contacts are stored on JSON server, deployed on Glitch
 
-[Try live demo!][https://contacts-react-sltnbv.web.app/]
+[Try live demo!](https://contacts-react-sltnbv.web.app/)
 
 @ 2023 [Ibraim Soltonbaev](https://soltonbaev.com)
