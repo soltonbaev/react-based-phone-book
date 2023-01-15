@@ -7,8 +7,8 @@
 
 .forms__item {
    display: block;
-   margin: 10px;
-   padding: 5px;
+   margin: 0.25rem;
+   padding: 0.25rem;
    background-color: #3e3e3e;
    color: white;
    border-radius: 2px;
@@ -17,4 +17,22 @@
 
 .contacts__edit-buttons {
    display: flex;
+}
+
+.contacts__edit-buttons button {
+   width: 33%;
+}
+
+.forms__form-button:hover {
+   cursor: pointer;
+   background-color: rgb(100, 85, 85);
+   transition-property: background-color;
+   transition-duration: 1s;
+}
+
+@media (min-width: 576px) {
+   .forms__item {
+      margin: 0.5rem;
+      padding: 0.5rem;
+   }
 }

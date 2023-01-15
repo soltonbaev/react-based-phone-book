@@ -6,6 +6,8 @@ const GlobalContextProvider = ({children}) => {
    const [editBtns, editBtnsOn] = useState(false);
    const [listState, listRefresh] = useState(0);
    const [infoType, setInfoType] = useState('help');
+   const [active, setActive] = useState(null);
+   const [isNameEmpty, setNameEmpty] = useState(false);
 
    return (
       <globalContext.Provider
@@ -18,6 +20,10 @@ const GlobalContextProvider = ({children}) => {
             editBtnsOn,
             listState,
             listRefresh,
+            active,
+            setActive,
+            setNameEmpty,
+            isNameEmpty,
          }}
       >
          {children}

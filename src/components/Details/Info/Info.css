@@ -1,17 +1,19 @@
 .info__content {
    list-style: none;
-   margin-left: 0;
+   margin: 0;
    padding-left: 0;
 }
 .info__photo-wrapper {
-   height: 200px;
-   width: 200px;
+   /* height: 200px; */
+   /* width: 200px; */
 }
 
 .info__photo-img {
-   width: 200px;
-   height: 200px;
+   /* width: 100%; */
+   width: 150px;
+   height: 150px;
    border: solid 4px white;
+   object-fit: cover;
 }
 
 .contacts__info-name {
@@ -23,6 +25,20 @@
 }
 
 .info__data {
-   font-size: 25px;
+   font-size: 1.5rem;
    font-weight: bold;
+}
+
+.info__row {
+   padding: 0.5rem 0;
+}
+.info__help-warning {
+   color: red;
+}
+
+@media (min-width: 576px) {
+   .info__photo-img {
+      width: 295px;
+      height: 210px;
+   }
 }

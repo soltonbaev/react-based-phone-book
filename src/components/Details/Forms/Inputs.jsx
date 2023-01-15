@@ -19,7 +19,7 @@ const Inputs = ({
             onChange={e => {
                setInputStates(e.target);
             }}
-            placeholder="Enter your name"
+            placeholder="Enter your name*"
             className="forms__item forms__input-name"
             type="text"
          />

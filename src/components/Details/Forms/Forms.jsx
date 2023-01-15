@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import EditBtns from './EditBtns';
 import './Forms.css';
-import {useAddContact} from '../../../functions/fetch';
+import {addContact} from '../../../functions/fetch';
 import Inputs from './Inputs';
 import {useContext} from 'react';
 import {globalContext} from '../../../contexts/GlobalContext';
 
 const Forms = () => {
    const [inpState, clearInp] = useState(0);
-   const {infoType, setInfoType, contactObj} = useContext(globalContext);
+   const {infoType, setInfoType, contactObj, setNameEmpty} =
+      useContext(globalContext);
    const {editBtns} = useContext(globalContext);
    const {listState, listRefresh} = useContext(globalContext);
    const [firstNameState, setFirstName] = useState('');
@@ -24,6 +25,7 @@ const Forms = () => {
 
    useEffect(() => {
       function setStates() {
+         console.log('firstNameState', firstNameState);
          setFirstName(contactObj.firstName);
          setLastName(contactObj.lastName);
          setPhoneNumber(contactObj.phoneNumber);
@@ -51,14 +53,16 @@ const Forms = () => {
       setPhoto('');
    }
 
-   function SubmitInpObj() {
-      useAddContact(inpObj);
+   async function SubmitInpObj() {
+      if (!firstNameState) {
+         setNameEmpty(true);
+         return;
+      }
+      await addContact(inpObj);
       setInfoType('help');
-      clearInp(state => {
-         state = state + 1;
-         return state;
-      });
+      clearInputStates();
       listRefresh(listState + 1);
+      setNameEmpty(false);
    }
    return (
       <div className="details__forms forms">
@@ -73,7 +77,7 @@ const Forms = () => {
          {!editBtns && (
             <button
                onClick={SubmitInpObj}
-               className="forms__item forms__btn-add"
+               className="forms__item forms__btn-add forms__form-button"
             >
                Add contact
             </button>

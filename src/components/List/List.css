@@ -1,7 +1,9 @@
 .list {
-   background-color: #3b3b3b73;
-   border-radius: 10px;
+   background-color: #3b3b3ba6;
+   border-top-right-radius: 10px;
+   border-bottom-right-radius: 10px;
    padding: 0;
+   width: 50%;
 }
 
 .list__wrapper {
@@ -16,10 +18,13 @@
 
 .list__item:hover {
    cursor: pointer;
+   background-color: rgb(100, 85, 85);
+   transition-property: background-color;
+   transition-duration: 0.5s;
 }
 
 .list__item {
-   font-size: 20px;
+   font-size: 1rem;
    padding: 5px 0px;
    padding-left: 0px;
    padding-left: 20px;
@@ -29,4 +34,10 @@
    transition-property: background-color;
    background-color: rgb(100, 85, 85);
    transition-duration: 0.5s;
+}
+
+@media (min-width: 576px) {
+   .list {
+      min-width: 320px;
+   }
 }

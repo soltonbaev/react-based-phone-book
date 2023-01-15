@@ -9,8 +9,9 @@ import {globalContext} from '../../contexts/GlobalContext';
 import {API} from '../../functions/useGlobals';
 const List = () => {
    const [contacts, setContacts] = useState([]);
-   const [active, setActive] = useState(null);
-   const {setContactObj, editBtnsOn, setInfoType} = useContext(globalContext);
+
+   const {setContactObj, editBtnsOn, setInfoType, active, setActive} =
+      useContext(globalContext);
 
    useEffect(() => {
       async function getData() {

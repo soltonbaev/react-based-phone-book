@@ -12,6 +12,8 @@ const EditBtns = ({inpObj, clearInputStates}) => {
       setContactObj,
       contactObj,
       setInfoType,
+      setActive,
+      setNameEmpty,
    } = useContext(globalContext);
 
    return (
@@ -19,8 +21,9 @@ const EditBtns = ({inpObj, clearInputStates}) => {
          {editBtnsOn && (
             <button
                className="forms__item forms__form-button contacts__btn-update"
-               onClick={e => {
-                  updateContact(contactObj.id, inpObj);
+               onClick={async () => {
+                  await updateContact(contactObj.id, inpObj);
+                  setContactObj(inpObj);
                   listRefresh(listState + 1);
                }}
             >
@@ -34,6 +37,8 @@ const EditBtns = ({inpObj, clearInputStates}) => {
                   clearInputStates();
                   editBtnsOn(false);
                   setInfoType('help');
+                  setActive(null);
+                  setNameEmpty(false);
                }}
             >
                New
@@ -42,10 +47,10 @@ const EditBtns = ({inpObj, clearInputStates}) => {
          {editBtnsOn && (
             <button
                className="forms__item forms__form-button forms__btn-delete"
-               onClick={() => {
+               onClick={async () => {
                   clearInputStates();
                   setContactObj({});
-                  deleteContact(contactObj.id);
+                  await deleteContact(contactObj.id);
                   setInfoType('help');
                   editBtnsOn(false);
                   listRefresh(listState + 1);
